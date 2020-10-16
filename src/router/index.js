@@ -3,10 +3,8 @@ import VueRouter from 'vue-router'
 
 const Music = () =>
   import ('views/Music.vue')
-const Home = () =>
-  import ('views/Home.vue')
-const Note = () =>
-  import ('views/home/Note.vue')
+const Love = () =>
+  import ('views/music/Ilove.vue')
 const Rank = () =>
   import ('views/music/RankView.vue')
 const Search = () =>
@@ -53,6 +51,11 @@ const routes = [{
     name: 'Music',
     component: Music,
     children: [{
+        path: 'Love',
+        name: 'Love',
+        component: Love
+      },
+      {
         path: 'rank',
         name: 'Rank',
         component: Rank
@@ -111,7 +114,8 @@ const routes = [{
         path: 'singer',
         name: 'Singer',
         component: Singer,
-        children: [{
+        children: [
+          {
             path: 'music',
             name: 'SingerMusic',
             component: SingerMusic,
@@ -134,18 +138,7 @@ const routes = [{
         ]
       },
     ]
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    children: [{
-      path: 'note',
-      name: 'Note',
-      component: Note
-    }]
   }
-
 ]
 
 const router = new VueRouter({

@@ -7,6 +7,7 @@
         <router-link :to="{name: 'SingerRank'}" tag="li">歌手</router-link>
         <router-link :to="{name: 'Mvs'}" tag="li">&thinsp;M V</router-link>
         <router-link :to="{name: 'Rcm'}" tag="li">歌单</router-link>
+        <router-link :to="{name: 'Love'}" tag="li">我喜欢</router-link>
         <p>排行榜Top100</p>
         <rank-item/>
       </ul>
@@ -29,22 +30,21 @@ export default {
   height: 639px;
   background: #66ccff;
   opacity: 0.8;
-  border-radius: 20px;
 }
 
 .meau p {
   background: rgb(144, 157, 158);
   font-size: 26px;
   margin: 0;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 20px;
   font-weight: bold;
 }
 .meau li {
   background-color: rgb(200, 240, 247);
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 20px;
   font-size: 26px;
   font-family: SimSun;

@@ -49,7 +49,6 @@
       </div>
     </div>
     <audio
-      crossorigin="anonymous"
       ref="audio"
       :src="url"
       @ended="end"

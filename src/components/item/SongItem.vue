@@ -21,13 +21,14 @@
     <div class="ctrl">
       <img title="播放" src="~assets/icon/player.png" @click="play" />
       <img title="加入播放列表" src="~assets/icon/add.png" @click="add" />
-      <img title="收藏" src="~assets/icon/like.png" />
+      <img title="收藏" src="~assets/icon/like.png" @click="like" />
       <img title="下载" src="~assets/icon/load.png" />
     </div>
   </div>
 </template>
 
 <script>
+import { addIlove } from "@/network/music";
 export default {
   props: ["data", "num"],
   methods: {
@@ -54,7 +55,24 @@ export default {
     },
     toMV(){
       this.$router.push({ name: "MvPage", params: { 'index': this.num } });
-    }
+    },
+    like() {
+      let mid = this.data.rid
+      for (let i = 0; i < this.$store.state.ilovelist.length; i++) {
+        if(this.$store.state.ilovelist[i].rid == mid){
+          this.$toast.show("已收藏");
+          return
+        }
+      }
+      addIlove(mid).then((res) => {
+        console.log(res.data);
+        if (res.data == "success"){
+          this.$toast.show('收藏"' + this.data.name + '"成功');
+        } else {
+          this.$toast.show('请先登录');
+        }
+      });
+    },
   },
 };
 </script>

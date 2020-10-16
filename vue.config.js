@@ -11,5 +11,6 @@ module.exports = {
       .set('views', resolve('src/views'))
       .set('assets', resolve('src/assets'))
   },
-  publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
+  assetsDir: 'static',
+  //publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 }

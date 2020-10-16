@@ -1,6 +1,19 @@
 import { requests } from './index'
 
 
+export function getIlove() {
+  return requests({
+    url: '/get_i_love',
+  })
+}
+
+export function addIlove(mid) {
+  return requests({
+    url: '/add_i_love',
+    params: { mid }
+  })
+}
+
 export function getRankList(bid) {
   return requests({
     url: '/get_rank',

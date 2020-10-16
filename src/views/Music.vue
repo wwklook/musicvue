@@ -82,7 +82,6 @@ span {
   height: 639px;
   background: #85b9e6;
   opacity: 0.8;
-  border-radius: 20px;
   position: relative;
 }
 .box2 {
