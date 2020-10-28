@@ -298,7 +298,7 @@ export default {
     toSinger() {
       this.$router.push({
         name: "Singer",
-        params: { aid: this.songInfo.artistId },
+        params: { aid: this.songInfo.artistid },
       });
     },
     toTime(x) {
@@ -425,7 +425,7 @@ input[type="range"]::-ms-fill-lower {
   right: 10px;
   bottom: 75px;
   border-radius: 2px;
-  background: -webkit-linear-gradient(#ffffff, #5cdee4) no-repeat, #82a5a3;
+  background: linear-gradient(#ffffff, #5cdee4) no-repeat, #82a5a3;
   background-size: 100% 100%;
   display: none;
   cursor: pointer;

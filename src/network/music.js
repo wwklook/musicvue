@@ -1,16 +1,24 @@
 import { requests } from './index'
 
 
+export function isLogin() {
+  return requests({
+    url: '/is_login',
+  })
+}
+
 export function getIlove() {
   return requests({
     url: '/get_i_love',
   })
 }
 
-export function addIlove(mid) {
+export function addIlove(data) {
   return requests({
     url: '/add_i_love',
-    params: { mid }
+    data: JSON.stringify({ data }),
+    method: 'post',
+    headers:{'Content-Type': 'application/json'}
   })
 }
 

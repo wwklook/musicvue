@@ -5,12 +5,12 @@ import axios from 'axios'
 
 export function requests(config) {
   const instance = axios.create({
-      baseURL: "http://116.62.71.162/",
-      timeout: 5000,
+      baseURL: "http://www.wwklook.com/",
+      timeout: 10000,
     })
-  instance.defaults.xsrfCookieName = 'csrftoken';
-  instance.defaults.xsrfHeaderName = 'X-CSRFToken';
-  instance.defaults.withCredentials = true
+//   instance.defaults.xsrfCookieName = 'csrftoken';
+//   instance.defaults.xsrfHeaderName = 'X-CSRFToken';
+//   instance.defaults.withCredentials = true
     //   instance.interceptors.response.use(res => {
     //     return res.data
     //   })

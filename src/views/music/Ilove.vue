@@ -22,7 +22,7 @@ import HeaderItem from "components/item/HeaderItem.vue";
 import Pagination from "components/item/Pagination.vue";
 import { getIlove } from "@/network/music";
 export default {
-  name: "ilove-view",
+  name: "Love",
   components: {
     LoveItem,
     HeaderItem,
@@ -38,17 +38,9 @@ export default {
       music_list: []
     };
   },
-  created() {
-    this.getlove();
-  },
-  methods: {
-    getlove() {
-      getIlove().then((res) => { 
-        this.music_list = res.data.musicList;
-        this.$store.commit("changeIlovelist", this.music_list )
-        console.log(this.music_list);
-      });
-    },
+  activated() {
+    this.music_list = this.$store.state.ilovelist;
+    this.$store.commit("changeSongList", this.music_list )
   },
 };
 </script>

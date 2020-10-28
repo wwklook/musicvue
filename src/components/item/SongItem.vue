@@ -60,13 +60,14 @@ export default {
       let mid = this.data.rid
       for (let i = 0; i < this.$store.state.ilovelist.length; i++) {
         if(this.$store.state.ilovelist[i].rid == mid){
-          this.$toast.show("已收藏");
+          this.$toast.show("已收藏, 不能重复收藏");
           return
         }
       }
-      addIlove(mid).then((res) => {
+      addIlove(this.data).then((res) => {
         console.log(res.data);
         if (res.data == "success"){
+          this.$store.commit("addLove", this.data)
           this.$toast.show('收藏"' + this.data.name + '"成功');
         } else {
           this.$toast.show('请先登录');

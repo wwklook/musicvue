@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.5",
+    "gzip": "^0.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.5.1"
@@ -17,6 +19,7 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "compression-webpack-plugin": "^6.0.3",
     "vue-template-compiler": "^2.6.11"
   }
 }

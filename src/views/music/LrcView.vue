@@ -5,9 +5,9 @@
         <div class="cover_song">{{ songInfo.name }}</div>
         <div>
           歌手 :
-          <span class="cover_name" @click="toAlbum">{{ songInfo.artist }}</span>
+          <span class="cover_name" @click="toSinger">{{ songInfo.artist }}</span>
           专辑 :
-          <span class="cover_album" @click="toSinger">{{ songInfo.album }}</span>
+          <span class="cover_album" @click="toAlbum">{{ songInfo.album }}</span>
         </div>
         <div class="lrc" ref="lrc">
           <p></p>
@@ -58,13 +58,13 @@ export default {
     toAlbum() {
       this.$router.push({
         name: "Album",
-        params: { aid: this.songInfo.albumId },
+        params: { aid: this.songInfo.albumid },
       });
     },
     toSinger() {
       this.$router.push({
         name: "Singer",
-        params: { aid: this.songInfo.artistId },
+        params: { aid: this.songInfo.artistid },
       });
     },
   },
