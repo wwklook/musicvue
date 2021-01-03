@@ -7,6 +7,8 @@ const Home = () =>
   import ('views/Home.vue')
 const Note = () =>
   import ('views/home/Note.vue')
+const Love = () =>
+  import ('views/music/Ilove.vue')
 const Rank = () =>
   import ('views/music/RankView.vue')
 const Search = () =>
@@ -53,6 +55,11 @@ const routes = [{
     name: 'Music',
     component: Music,
     children: [{
+      path: 'Love',
+      name: 'Love',
+      component: Love
+      },
+      {
         path: 'rank',
         name: 'Rank',
         component: Rank

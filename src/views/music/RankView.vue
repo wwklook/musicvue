@@ -3,6 +3,7 @@
   <h2>排行榜</h2>
   <div class="song_info">
     <header-item />
+    <img :src="ranklist.f" alt="">
       <song-item v-for="(item, index) in rank_list" :key="index" :data="item" :num="index" />
     </div>
   </div>
@@ -42,6 +43,7 @@ export default {
   methods: {
     getList() {
       getRankList(this.$route.query.id).then((res) => {
+        console.log(res);
         this.rank_list = res.data.data;
         this.$store.commit("changeSongList", this.rank_list);
       });
