@@ -30,7 +30,7 @@
     <div class="ctrl">
       <img title="播放" src="~assets/icon/player.png" @click="play" />
       <img title="加入播放列表" src="~assets/icon/add.png" @click="add" />
-      <img title="收藏" src="~assets/icon/like.png" @click="like" />
+      <img title="收藏" :src="likeImg" @click="like" />
       <img title="下载" src="~assets/icon/load.png" />
     </div>
   </div>
@@ -42,7 +42,12 @@ export default {
   props: ["data", "num"],
   computed: {
     islike() {
-      return this.$store.state.iloverid.indexOf(this.data.rid) !== -1;
+      return this.$store.state.iloverid.indexOf(this.data.rid + "") !== -1;
+    },
+    likeImg() {
+      return this.islike
+        ? require("assets/icon/_like.png")
+        : require("assets/icon/like.png");
     },
   },
   methods: {
@@ -83,7 +88,7 @@ export default {
       }
       if (this.islike) {
         delILove(this.data.rid).then((res) => {
-          let index = this.$store.state.iloverid.indexOf(this.data.rid)
+          let index = this.$store.state.iloverid.indexOf(this.data.rid + "");
           this.$store.commit("delLove", index);
           this.$store.commit("delLoverid", index);
           this.$toast.show('取消收藏"' + this.data.name + '"成功');
@@ -92,7 +97,7 @@ export default {
       }
       addIlove(this.data, this.data.rid).then((res) => {
         this.$store.commit("addLove", this.data);
-        this.$store.commit("addLoverid", this.data.rid);
+        this.$store.commit("addLoverid", this.data.rid + "");
         this.$toast.show('收藏"' + this.data.name + '"成功');
       });
     },

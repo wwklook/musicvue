@@ -29,5 +29,8 @@ isLogin().then(res => {
   getIlove().then((res) => {
     store.commit("changeIlovelist", res.data.musicList)
     store.commit("changeIloverid", res.data.rid)
+    if(router.currentRoute.name == "Love"){
+      store.commit("changeSongList", res.data.musicList)
+    }
   });
 })

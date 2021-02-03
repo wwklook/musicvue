@@ -3,7 +3,7 @@
     <h2>我喜欢</h2>
     <div class="ilove">
       <header-item />
-      <love-item
+      <song-item
         v-for="(item, index) in love_list"
         :key="index"
         :data="item"
@@ -17,20 +17,20 @@
 </template>
 
 <script>
-import LoveItem from "components/item/LoveItem.vue";
+import SongItem from "components/item/SongItem.vue";
 import HeaderItem from "components/item/HeaderItem.vue";
 import Pagination from "components/item/Pagination.vue";
 export default {
   name: "Love",
   components: {
-    LoveItem,
+    SongItem,
     HeaderItem,
     Pagination,
   },
   computed: {
-    love_list(){
-      return this.$store.state.ilovelist
-    }
+    love_list() {
+      return this.$store.state.ilovelist;
+    },
   },
   data() {
     return {
@@ -42,7 +42,7 @@ export default {
     };
   },
   activated() {
-    this.$store.commit("changeSongList", this.ilovelist);
+    this.$store.commit("changeSongList", this.love_list);
   },
 };
 </script>

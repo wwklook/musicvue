@@ -98,7 +98,7 @@ export default {
       return this.$store.state.playList;
     },
     islike() {
-      return this.$store.state.iloverid.indexOf(this.songInfo.rid) !== -1;
+      return this.$store.state.iloverid.indexOf(this.songInfo.rid + "") !== -1;
     },
     likeImg() {
       return this.islike
@@ -110,6 +110,7 @@ export default {
     this.$bus.$on("playMusic", (index) => {
       this.playIndex = index;
       this.$store.commit("changePlayList");
+      console.log(this.playList);
       this.replay();
     });
     this.$bus.$on("changePlay", (index) => {
@@ -132,7 +133,9 @@ export default {
       }
       if (this.islike) {
         delILove(this.songInfo.rid).then((res) => {
-          let index = this.$store.state.iloverid.indexOf(this.songInfo.rid);
+          let index = this.$store.state.iloverid.indexOf(
+            this.songInfo.rid + ""
+          );
           this.$store.commit("delLove", index);
           this.$store.commit("delLoverid", index);
           this.$toast.show('取消收藏"' + this.songInfo.name + '"成功');
@@ -141,7 +144,7 @@ export default {
       }
       addIlove(this.songInfo, this.songInfo.rid).then((res) => {
         this.$store.commit("addLove", this.songInfo);
-        this.$store.commit("addLoverid", this.songInfo.rid);
+        this.$store.commit("addLoverid", this.songInfo.rid + "");
         this.$toast.show('收藏"' + this.songInfo.name + '"成功');
       });
     },
