@@ -9,20 +9,24 @@ const store = new Vuex.Store({
     playList: [],
     playIndex: 0,
     ilovelist: [],
+    iloverid: [],
     isLogin: false
   },
   mutations: {
-    changeLoginState(state, isLogin){
+    changeLoginState(state, isLogin) {
       state.isLogin = isLogin
     },
     changeSongList(state, list) {
       state.songList = list
     },
-    changePlayList(state, list) {
-      state.playList = list
+    changePlayList(state) {
+      state.playList = state.songList
     },
     changeIlovelist(state, list) {
-        state.ilovelist = list
+      state.ilovelist = list
+    },
+    changeIloverid(state, list) {
+      state.iloverid = list
     },
     changeMvList(state, list) {
       state.mvList = list
@@ -33,11 +37,17 @@ const store = new Vuex.Store({
     addLove(state, list) {
       state.ilovelist.push(list)
     },
-    delLove(state, index) {
-      state.ilovelist.splice(index, 1)
+    addLoverid(state, rid) {
+      state.iloverid.push(rid + "")
     },
     addSong(state, index) {
       state.playList.splice(state.playIndex + 1, 0, state.songList[index])
+    },
+    delLove(state, index) {
+      state.ilovelist.splice(index, 1)
+    },
+    delLoverid(state, index) {
+      state.iloverid.splice(index, 1)
     },
     delSong(state, index) {
       state.playList.splice(index, 1)

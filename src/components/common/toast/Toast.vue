@@ -1,6 +1,6 @@
 <template>
   <div class="toast" v-show="isShow">
-    <span>{{message}}</span>
+    <span>{{ message }}</span>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
     return {
       message: "",
       isShow: false,
+      timeout: null,
     };
   },
 
@@ -18,9 +19,19 @@ export default {
     show(message, duration = 2000) {
       this.isShow = true;
       this.message = message;
-      setTimeout(() => {
-        (this.isShow = false), (this.message = "");
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      this.timeout = setTimeout(() => {
+        this.isShow = false;
+        this.message = "";
+        this.timeout = null;
       }, duration);
+    },
+    hide() {
+      this.isShow = false;
+      this.message = "";
+      this.timeout = null;
     },
   },
 };
@@ -36,7 +47,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 18px;
-  padding: 2px 8px;
+  padding: 15px 15px;
   border-radius: 15px;
   letter-spacing: 1.5px;
   z-index: 999;

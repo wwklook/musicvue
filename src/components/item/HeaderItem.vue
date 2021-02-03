@@ -12,7 +12,7 @@
 
 <style scoped>
 .header {
-  width: 860px;
+  width: 100%;
   height: 60px;
   background: beige;
   display: flex;

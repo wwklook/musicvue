@@ -22,13 +22,12 @@ Vue.prototype.$bus = new Vue()
 
 
 // 查看登录状态 并获取数据
-isLogin().then(res=>{
+isLogin().then(res => {
+  if (res.data == "yes") {
     store.commit("changeLoginState", true)
-    getIlove().then((res) => { 
-      let love_list = []
-      for(let i=0;i < res.data.musicList.length;i++){
-        love_list.push(res.data.musicList[i].data)
-      }
-      store.commit("changeIlovelist", love_list )
-    });
+  }
+  getIlove().then((res) => {
+    store.commit("changeIlovelist", res.data.musicList)
+    store.commit("changeIloverid", res.data.rid)
+  });
 })

@@ -13,14 +13,21 @@ export function getIlove() {
   })
 }
 
-export function addIlove(data) {
+export function addIlove(data, rid) {
   return requests({
     url: '/add_i_love',
-    data: JSON.stringify({ data }),
+    data: JSON.stringify({ data, rid }),
     method: 'post',
-    headers:{'Content-Type': 'application/json'}
+    headers: { 'Content-Type': 'application/json' }
   })
 }
+export function delILove(rid) {
+  return requests({
+    url: '/del_i_love',
+    params: { rid }
+  })
+}
+
 
 export function getRankList(bid) {
   return requests({

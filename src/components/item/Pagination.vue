@@ -77,7 +77,6 @@ export default {
       if (item == "..." || item == this.pn) {
         return;
       } else {
-        console.log(this.eventName);
         this.$bus.$emit(this.eventName, item);
       }
     },
