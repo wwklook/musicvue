@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
 <div class="content">
   <h2>排行榜</h2>
@@ -59,3 +60,64 @@ export default {
   overflow-y: auto;
 }
 </style>
+=======
+<template>
+<div class="content">
+  <h2>排行榜</h2>
+  <div class="song_info">
+    <header-item />
+      <song-item v-for="(item, index) in rank_list" :key="index" :data="item" :num="index" />
+    </div>
+  </div>
+</template>
+
+<script>
+import SongItem from "components/item/SongItem.vue";
+import HeaderItem from "components/item/HeaderItem.vue";
+import { getRankList } from "@/network/music";
+
+export default {
+  name: "rank-view",
+  components: {
+    SongItem,
+    HeaderItem
+  },
+  data() {
+    return {
+      rank_list: [],
+      id: null,
+    };
+  },
+  created() {
+    this.getList();
+    this.$bus.$on("rankItemClick", (id) => {
+      if (id != this.id) {
+        this.getList();
+        this.id = id;
+      }
+    });
+  },
+  activated() {
+    if (this.id == this.$route.query.id) {
+      this.$store.commit("changeSongList", this.rank_list);
+    }
+  },
+  methods: {
+    getList() {
+      getRankList(this.$route.query.id).then((res) => {
+        this.rank_list = res.data.data;
+        this.$store.commit("changeSongList", this.rank_list);
+      });
+    },
+  },
+};
+</script>
+
+<style scoped>
+.song_info {
+  width: 880px;
+  height: 600px;
+  overflow-y: auto;
+}
+</style>
+>>>>>>> f035ec46eb036d9f1d58d02550a9fb97d85b11c5

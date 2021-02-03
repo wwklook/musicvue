@@ -43,7 +43,7 @@ export default {
   font-size: 26px;
   font-family: SimSun;
   cursor: pointer;
-  border-bottom: ridge;
+  border-bottom: 1px solid #c7c7c7;
 }
 
 .rank_item li:nth-child(odd) {
