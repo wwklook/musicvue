@@ -128,7 +128,7 @@ function animate(obj, json, fn) {
 .detail {
   width: 500px;
   height: 600px;
-  color: white;
+  color:#f3f3f3;
   text-align: center;
 }
 .cover_song {
@@ -156,8 +156,8 @@ function animate(obj, json, fn) {
 }
 .current {
   font-weight: bold;
-  font-size: 21px;
+  font-size: 22px;
   line-height: 26px;
-  color: aqua;
+  color: #ffffff !important;
 }
 </style>

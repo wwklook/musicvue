@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { getSongInfoAndLrc, getMusicUrl } from "@/network/music.js";
+import { getSongInfoAndLrc, addIlove, delILove } from "@/network/music.js";
 
 export default {
   data() {
@@ -110,7 +110,6 @@ export default {
     this.$bus.$on("playMusic", (index) => {
       this.playIndex = index;
       this.$store.commit("changePlayList");
-      console.log(this.playList);
       this.replay();
     });
     this.$bus.$on("changePlay", (index) => {

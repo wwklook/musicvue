@@ -29,6 +29,15 @@ export function delILove(rid) {
 }
 
 
+export function loadFile(url) {
+  return requests({
+    url: '/download',
+    params: { url },
+    timeout: 100000,
+    responseType: 'blob'
+  })
+}
+
 export function getRankList(bid) {
   return requests({
     url: '/get_rank',
